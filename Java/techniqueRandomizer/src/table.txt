@@ -1,0 +1,17 @@
+Scales: 
+
+Four octave: A
+Formula pattern: A
+Chromatic: F#/Gb
+Solid Octaves: Bb
+Broken Octaves: C#/Db
+Chords: 
+
+Broken: A
+Solid: E
+Alternate pattern: D
+Dominant/Diminished 7th: E
+Arpeggios: 
+
+Tonic: G
+Dominant/Diminished 7th: Bb

@@ -1,0 +1,36 @@
+Sum of all numbers in this file: 654
+
+Why is  an interesting number?
+Some species of cicada emerge once every  years. It is believed that this long life cycle evolved in response to predators. Since  is a prime number, a predator with a shorter life cycle cannot reliably prey on the cicadas.
+At the dawn of the new year , let us reflect that  is also a prime number. Perhaps we can take a lesson from the cicadas, and resolve this year to break out of our old destructive cycles.
+In this article, I will discuss some of the interesting mathematical properties of the number .
+ is prime
+The first property to note is that  is a prime number. This means that  is not divisible by any number except for  and itself. (At this point, I am obligated to mention that  is not considered to be prime.)
+If a number N > is not prime, then one of its factors is less than or equal to the square root of N. So if we wish to prove that N is prime, it suffices to show that N is not divisible by any prime number up to the square root of N. 
+For , it suffices to check for divisibility by , , , , , , , , , , , , , and . We can stop at , because the next prime  is greater than the square root of .
+Here is a short Python script to check if a number is prime. Keep in mind that this is not an efficient method for large numbers, but it works fine for small numbers like .
+
+
+Ah, amicable numbers. They love each other so much. How much? Well, let's take a classic pair- and -and see just how friendly they are. 
+Let's take all the proper divisors of  (that is to say, all its divisors that leave no remainder, including the number , and excluding the number itself) and all them up:
+ +  +  +  +  +  +  +  +  +  +  = . 
+Now, let's take  and do the same thing: +  +  + +  = .Voila: a pair of amicable numbers. 
+Other pairs include (, ), (, ), and (, ). This type of number pair was discovered and studied by the Pythagoreans, and has been the subject of much research through the centuries - Fermat, Descartes, Iranian Muhammad Baqir Yazdi, and Iraqi Th?bit ibn Qurra are among the many mathematicians who have delved into the world of amicable numbers. 
+Topics of further study include attempts to discover if there is an infinite amount of pairs, to discern patterns, and to better understand why and how this happens.
+Because mathematicians would never be satisfied with mere amicable numbers, "betrothed numbers" are pairs where the sum of the proper divisors of each number is equal to the other number +.
+
+What are weird numbers? To understand them, we must first begin with "abundant" numbers. 
+Abundant numbers, also known as "excessive," are bigger than the sum of their proper divisors. 
+, for instance, is the first (smallest) abundant number- the sum of its proper divisors, ++++, is . 
+, therefore, has an "abundance" of , the amount by which the sum of its divisors exceeds the number. 
+There are many even abundant numbers, but we don't get to an odd one until the number .
+Some abundant numbers are "semiperfect" or "pseudoperfect," meaning that they are equal to all or just some of their proper divisors. 
+ is an imperfect abundant number because some of its divisors can be added together to form .
+At last, we arrive at weird numbers. A number is weird if it is abundant but NOT semiperfect; in other words, the sum of its divisors is larger than the number itself, but no subset of divisor sums equal the number. 
+Weird numbers are uncommon - the first few are , , ,, and ,.
+
+Some numbers are weird; others are happy. If you'd like to find out if a given number is happy, you'll need to perform the following set of operations. 
+Let's take the number : First, square each digit, then add them together: ^ + ^ =  +  = . Then, we'll do it again with our new number: ^ + ^ =  +  = . And again: ^ + ^ =  +  = . 
+And finally: ^ + ^ =  +  = . Voila! It's a happy number. Anytime you take a number, perform this "procedure," and eventually arrive at the number , you have yourself a happy number. If your number never reaches , then sadly, it's unhappy. 
+Interestingly, happy number are extremely common; there are  of them between  and , for example.
+As a final note, the greatest happy number with no recurring digits is ,,. That is a happy number indeed.

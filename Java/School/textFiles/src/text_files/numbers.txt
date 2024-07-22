@@ -1,0 +1,34 @@
+Why is 2017 an interesting number?
+Some species of cicada emerge once every 17 years. It is believed that this long life cycle evolved in response to predators. Since 17 is a prime number, a predator with a shorter life cycle cannot reliably prey on the cicadas.
+At the dawn of the new year 2017, let us reflect that 2017 is also a prime number. Perhaps we can take a lesson from the cicadas, and resolve this year to break out of our old destructive cycles.
+In this article, I will discuss some of the interesting mathematical properties of the number 2017.
+2017 is prime
+The first property to note is that 2017 is a prime number. This means that 2017 is not divisible by any number except for 1 and itself. (At this point, I am obligated to mention that 1 is not considered to be prime.)
+If a number N >1 is not prime, then one of its factors is less than or equal to the square root of N. So if we wish to prove that N is prime, it suffices to show that N is not divisible by any prime number up to the square root of N. 
+For 2017, it suffices to check for divisibility by 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, and 43. We can stop at 43, because the next prime 47 is greater than the square root of 2017.
+Here is a short Python script to check if a number is prime. Keep in mind that this is not an efficient method for large numbers, but it works fine for small numbers like 2017.
+
+
+Ah, amicable numbers. They love each other so much. How much? Well, let's take a classic pair-284 and 220-and see just how friendly they are. 
+Let's take all the proper divisors of 220 (that is to say, all its divisors that leave no remainder, including the number 1, and excluding the number itself) and all them up:
+1 + 2 + 4 + 5 + 10 + 11 + 20 + 22 + 44 + 55 + 110 = 284. 
+Now, let's take 284 and do the same thing:1 + 2 + 4 +71 + 142 = 220.Voila: a pair of amicable numbers. 
+Other pairs include (1184, 1210), (2620, 2924), and (5020, 5564). This type of number pair was discovered and studied by the Pythagoreans, and has been the subject of much research through the centuries - Fermat, Descartes, Iranian Muhammad Baqir Yazdi, and Iraqi Th?bit ibn Qurra are among the many mathematicians who have delved into the world of amicable numbers. 
+Topics of further study include attempts to discover if there is an infinite amount of pairs, to discern patterns, and to better understand why and how this happens.
+Because mathematicians would never be satisfied with mere amicable numbers, "betrothed numbers" are pairs where the sum of the proper divisors of each number is equal to the other number +1.
+
+What are weird numbers? To understand them, we must first begin with "abundant" numbers. 
+Abundant numbers, also known as "excessive," are bigger than the sum of their proper divisors. 
+12, for instance, is the first (smallest) abundant number- the sum of its proper divisors, 1+2+3+4+6, is 16. 
+12, therefore, has an "abundance" of 4, the amount by which the sum of its divisors exceeds the number. 
+There are many even abundant numbers, but we don't get to an odd one until the number 945.
+Some abundant numbers are "semiperfect" or "pseudoperfect," meaning that they are equal to all or just some of their proper divisors. 
+12 is an imperfect abundant number because some of its divisors can be added together to form 12.
+At last, we arrive at weird numbers. A number is weird if it is abundant but NOT semiperfect; in other words, the sum of its divisors is larger than the number itself, but no subset of divisor sums equal the number. 
+Weird numbers are uncommon - the first few are 70, 836, 4,030, and 5,830.
+
+Some numbers are weird; others are happy. If you'd like to find out if a given number is happy, you'll need to perform the following set of operations. 
+Let's take the number 44: First, square each digit, then add them together: 4^2 + 4^2 = 16 + 16 = 32. Then, we'll do it again with our new number: 3^2 + 2^2 = 9 + 4 = 13. And again: 1^2 + 3^2 = 1 + 9 = 10. 
+And finally: 1^2 + 0^2 = 1 + 0 = 1. Voila! It's a happy number. Anytime you take a number, perform this "procedure," and eventually arrive at the number 1, you have yourself a happy number. If your number never reaches 1, then sadly, it's unhappy. 
+Interestingly, happy number are extremely common; there are 11 of them between 1 and 50, for example.
+As a final note, the greatest happy number with no recurring digits is 986,543,210. That is a happy number indeed.

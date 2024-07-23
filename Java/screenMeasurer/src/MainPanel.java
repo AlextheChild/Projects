@@ -1,10 +1,12 @@
+import java.util.List;
+import java.io.*;
 import javax.swing.*;
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
-import java.io.*;
-import javax.imageio.ImageIO;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MainPanel extends JPanel implements MouseListener, MouseMotionListener {
     final int width = 1440, height = 900;
@@ -99,6 +101,7 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
             takeScreenshot(selectX, selectY, selectW, selectH);
         } catch (Exception ex) {
             System.out.println("Error taking screenshot");
+            System.out.println(ex);
         }
 
         System.exit(0);
@@ -120,7 +123,13 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
         }
 
         // save
-        ImageIO.write(image, "png", new File(saveFolderPath + "screenshot" + System.currentTimeMillis() + ".png"));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH.mm.ss");
+        LocalDateTime now = LocalDateTime.now();
+        String[] timeArray = dtf.format(now).split(" ");
+
+        ImageIO.write(image, "png",
+                new File(saveFolderPath +
+                        "Screenshot " + timeArray[0] + " at " + timeArray[1] + ".png"));
 
         // copy to clipboard
         new ImageCopier(image);

@@ -12,7 +12,7 @@ import display as d
 ! make framerate better
 ! opencv for image processing
 ! convert all saved imagest from RGBA to RGB
-! global variables
+! global variables 
 """
 
 

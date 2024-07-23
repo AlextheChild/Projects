@@ -6,7 +6,7 @@ from PIL import Image
 
 tf.function(reduce_retracing=True)
 
-model = keras.models.load_model("models/cnn/saved_models/vgg_good_20_20.keras")
+model = keras.models.load_model("models/saved_models/vgg_good_20_20.keras")
 
 
 def get_predictions():
@@ -58,7 +58,7 @@ def get_cnn_prediction():
     return balloon_positions
 
 
-# ————— yolo functions ————— #
+# ————— rcnn functions ————— #
 
 """
 ! get selective search boxes

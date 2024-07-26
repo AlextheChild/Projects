@@ -13,6 +13,7 @@ import display as d
 ! opencv for image processing
 ! convert all saved imagest from RGBA to RGB
 ! global variables 
+! take all data, mask out the backgrounds with random noise, train on that dataset
 """
 
 

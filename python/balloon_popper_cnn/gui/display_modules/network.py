@@ -6,11 +6,11 @@ from PIL import Image
 
 tf.function(reduce_retracing=True)
 
-model = keras.models.load_model("models/saved_models/vgg_good_20_20.keras")
+model = keras.models.load_model("models/saved_models/rcnn_vgg_bad_20.keras")
 
 
 def get_predictions():
-    return get_selective_search_proposals()
+    return get_thing_prediction()
 
 
 # ————— ccn functions ————— #
@@ -54,6 +54,36 @@ def get_cnn_prediction():
         i[1] *= 1200
         i[2] *= 1920
         i[3] *= 1200
+
+    return balloon_positions
+
+
+# ————— too braindead to figure out ————— #
+
+
+def get_thing_prediction():
+    image = Image.open("screen.png")
+    image = image.convert("RGB").resize(
+        [int(image.width * (2880 / 1920)), int(image.height * (1800 / 1200))]
+    )
+
+    balloon_positions = []
+    for y in range(0, image.height, 360):
+        for x in range(0, image.width, 320):
+            cropped_image = image.crop([x, y, x + 320, y + 360]).resize([32, 36])
+            cropped_image = np.asarray(cropped_image)[None, :]
+            cropped_image = cropped_image.astype("float32") / 255
+
+            if model.predict(cropped_image, verbose=0) > 0.5:
+                # ! still at 2880x1800
+                balloon_positions.append(
+                    [
+                        int(x * (1920 / 2880)),
+                        int(y * (1920 / 2880)),
+                        int((x + 320) * (1920 / 2880)),
+                        int((y + 360) * (1920 / 2880)),
+                    ]
+                )
 
     return balloon_positions
 

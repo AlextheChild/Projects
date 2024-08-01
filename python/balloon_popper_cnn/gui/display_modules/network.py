@@ -68,6 +68,7 @@ def get_thing_prediction():
     )
 
     balloon_positions = []
+    # ! 36x36 might be better
     for y in range(0, image.height, 360):
         for x in range(0, image.width, 320):
             cropped_image = image.crop([x, y, x + 320, y + 360]).resize([32, 36])
@@ -75,7 +76,6 @@ def get_thing_prediction():
             cropped_image = cropped_image.astype("float32") / 255
 
             if model.predict(cropped_image, verbose=0) > 0.5:
-                # ! still at 2880x1800
                 balloon_positions.append(
                     [
                         int(x * (1920 / 2880)),

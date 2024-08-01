@@ -8,7 +8,7 @@ import java.awt.image.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class MainPanel extends JPanel implements MouseListener, MouseMotionListener {
+public class MainPanel extends JPanel implements MouseListener, MouseMotionListener, KeyListener {
     final int width = 1440, height = 900;
     final int rightMargin = 70, bottomMargin = 30;
     final String saveFolderPath = "C:/Users/Alex/Desktop/";
@@ -32,9 +32,7 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
         this.setOpaque(false);
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
-        this.setFocusable(true);
-        this.requestFocus();
-        this.requestFocusInWindow();
+        this.addKeyListener(this);
     }
 
     @Override
@@ -81,6 +79,13 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
     }
 
     @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == 27) {
+            System.exit(0);
+        }
+    }
+
+    @Override
     public void mouseDragged(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();
@@ -94,17 +99,20 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        if (selectW <= 0 || selectH <= 0) {
+            System.exit(0);
+        }
+
         dragging = false;
         repaint();
 
         try {
             takeScreenshot(selectX, selectY, selectW, selectH);
         } catch (Exception ex) {
-            System.out.println("Error taking screenshot");
+            System.out.println("Error taking screenshot. ");
             System.out.println(ex);
         }
 
-        System.exit(0);
     }
 
     public void takeScreenshot(int x, int y, int w, int h) throws AWTException, IOException {
@@ -157,14 +165,11 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
         coordLabel.setBounds(x, y, 70, 30);
     }
 
-    // ————— exiting ————— //
+    // ————— hell ————— //
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.exit(0);
     }
-
-    // ————— hell ————— //
 
     @Override
     public void mouseEntered(MouseEvent e) {
@@ -172,5 +177,13 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
 
     @Override
     public void mouseExited(MouseEvent e) {
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
     }
 }

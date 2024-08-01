@@ -14,8 +14,6 @@ public class GUI extends JFrame {
         this.setAlwaysOnTop(true);
         this.setBackground(new Color(0, 0, 0, 80));
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
-        panel.requestFocusInWindow();
     }
 }

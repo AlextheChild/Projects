@@ -8,7 +8,10 @@ import java.awt.image.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class MainPanel extends JPanel implements MouseListener, MouseMotionListener, KeyListener {
+// ! maybe right click just stops the dragging but doesn't system exit
+// ! review all the logic
+
+public class MainPanel extends JPanel implements MouseListener, MouseMotionListener {
     final int width = 1440, height = 900;
     final int rightMargin = 70, bottomMargin = 30;
     final String saveFolderPath = "C:/Users/Alex/Desktop/";
@@ -22,17 +25,16 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
 
     public MainPanel() {
         coordLabel = new JLabel("", SwingConstants.CENTER);
-        coordLabel.setForeground(new Color(255, 255, 255, 200));
+        coordLabel.setForeground(new Color(255, 255, 255));
         coordLabel.setFont(new Font("Monospace", Font.BOLD, 12));
 
         this.setLayout(null);
         this.add(coordLabel);
         this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-
         this.setOpaque(false);
+
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
-        this.addKeyListener(this);
     }
 
     @Override
@@ -66,6 +68,10 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
 
     // ————— screenshot ————— //
 
+    // Mouse1 released with no drag- close
+    // Mouse1 released with drag - take screenshot then close
+    // Mouse
+
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
@@ -73,46 +79,52 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
             beforeDraggedX = e.getX();
             beforeDraggedY = e.getY();
         }
-        if (e.getButton() == MouseEvent.BUTTON3 && dragging) {
-            System.exit(0);
-        }
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == 27) {
-            System.exit(0);
-        }
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
+        if (dragging) {
+            // update drag offset
+            int x = e.getX();
+            int y = e.getY();
+            dragOffsetX = x - beforeDraggedX;
+            dragOffsetY = y - beforeDraggedY;
 
-        dragOffsetX = x - beforeDraggedX;
-        dragOffsetY = y - beforeDraggedY;
-
-        displayNums(x, y, Math.abs(dragOffsetX), Math.abs(dragOffsetY));
-        repaint();
+            // update coordinate display
+            displayNums(x, y, Math.abs(dragOffsetX), Math.abs(dragOffsetY));
+            repaint();
+        } else {
+            int x = e.getX();
+            int y = e.getY();
+            displayNums(x, y, x, y);
+            repaint();
+        }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (selectW <= 0 || selectH <= 0) {
-            System.exit(0);
+        if (e.getButton() == MouseEvent.BUTTON1 && dragging) {
+            if (selectW <= 0 || selectH <= 0) {
+                System.exit(0);
+            }
+
+            dragging = false;
+            repaint();
+
+            try {
+                takeScreenshot(selectX, selectY, selectW, selectH);
+            } catch (Exception ex) {
+                System.out.println("Error taking screenshot. ");
+                System.out.println(ex);
+            }
         }
-
-        dragging = false;
-        repaint();
-
-        try {
-            takeScreenshot(selectX, selectY, selectW, selectH);
-        } catch (Exception ex) {
-            System.out.println("Error taking screenshot. ");
-            System.out.println(ex);
+        if (e.getButton() == MouseEvent.BUTTON3) {
+            dragging = false;
+            int x = e.getX();
+            int y = e.getY();
+            displayNums(x, y, x, y);
+            repaint();
         }
-
     }
 
     public void takeScreenshot(int x, int y, int w, int h) throws AWTException, IOException {
@@ -150,6 +162,7 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
         int x = e.getX();
         int y = e.getY();
         displayNums(x, y, x, y);
+        repaint();
     }
 
     public void displayNums(int x, int y, int num1, int num2) {
@@ -177,13 +190,5 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
 
     @Override
     public void mouseExited(MouseEvent e) {
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
     }
 }

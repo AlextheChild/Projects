@@ -1,0 +1,27 @@
+/* special chat styles when theater mode is active */
+
+[data-ytlstm-theater-mode] yt-live-chat-banner-manager[has-visible-banner] {
+  background: none !important;
+}
+[data-ytlstm-theater-mode] #input-panel.yt-live-chat-renderer::after {
+  display: none !important;
+}
+[data-ytlstm-theater-mode] #ticker #items {
+  padding: 0px 20px 8px !important;
+}
+[data-ytlstm-theater-mode] #chat #items > * {
+  padding: 4px 20px !important;
+  box-sizing: border-box;
+}
+[data-ytlstm-theater-mode] yt-live-chat-header-renderer {
+  padding: 8px 4px !important;
+}
+[data-ytlstm-theater-mode] yt-live-chat-message-input-renderer {
+  padding: 16px 12px !important;
+}
+[data-ytlstm-theater-mode] yt-live-chat-ticker-paid-message-item-renderer, yt-live-chat-ticker-sponsor-item-renderer {
+  width: fit-content !important;
+}
+[data-ytlstm-theater-mode] #panel-pages.yt-live-chat-renderer {
+  border: none;
+}

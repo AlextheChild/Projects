@@ -1,0 +1,94 @@
+[data-ytlstm-chat-over-video] yt-live-chat-renderer {
+  background: none !important;
+}
+[data-ytlstm-chat-over-video] #separator.yt-live-chat-renderer {
+  border-bottom: none;
+}
+[data-ytlstm-chat-over-video] yt-live-chat-header-renderer,
+[data-ytlstm-chat-over-video] yt-live-chat-message-input-renderer,
+[data-ytlstm-chat-over-video] yt-live-chat-text-message-renderer #content,
+[data-ytlstm-chat-over-video] yt-live-chat-viewer-engagement-message-renderer #card {
+  background: rgba(255, 255, 255, var(--ytlstm-overlay-background-opacity));
+}
+[dark][data-ytlstm-chat-over-video] yt-live-chat-header-renderer,
+[dark][data-ytlstm-chat-over-video] yt-live-chat-message-input-renderer,
+[dark][data-ytlstm-chat-over-video] yt-live-chat-text-message-renderer #content,
+[dark][data-ytlstm-chat-over-video] yt-live-chat-viewer-engagement-message-renderer #card {
+  background: rgba(0, 0, 0, var(--ytlstm-overlay-background-opacity)) !important;
+}
+html[data-ytlstm-overlay-text-shadow][data-ytlstm-chat-over-video] yt-live-chat-header-renderer,
+html[data-ytlstm-overlay-text-shadow][data-ytlstm-chat-over-video] yt-live-chat-message-input-renderer,
+html[data-ytlstm-overlay-text-shadow][data-ytlstm-chat-over-video] yt-live-chat-text-message-renderer #content,
+html[data-ytlstm-overlay-text-shadow][data-ytlstm-chat-over-video] yt-live-chat-viewer-engagement-message-renderer #card {
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2), -1px -1px 1px rgba(255, 255, 255, 0.2), 1px -1px 1px rgba(255, 255, 255, 0.2), -1px 1px 1px rgba(255, 255, 255, 0.2);
+}
+html[dark][data-ytlstm-overlay-text-shadow][data-ytlstm-chat-over-video] yt-live-chat-header-renderer,
+html[dark][data-ytlstm-overlay-text-shadow][data-ytlstm-chat-over-video] yt-live-chat-message-input-renderer,
+html[dark][data-ytlstm-overlay-text-shadow][data-ytlstm-chat-over-video] yt-live-chat-text-message-renderer #content,
+html[dark][data-ytlstm-overlay-text-shadow][data-ytlstm-chat-over-video] yt-live-chat-viewer-engagement-message-renderer #card {
+  text-shadow: 1px 1px 1px black, -1px -1px 1px black, 1px -1px 1px black, -1px 1px 1px black;
+}
+html[data-ytlstm-overlay-text-shadow][data-ytlstm-chat-over-video] yt-live-chat-text-message-renderer #content .owner {
+  text-shadow: none;
+}
+[data-ytlstm-chat-over-video] yt-live-chat-ticker-renderer {
+  background: none !important;
+}
+html:not(:hover)[data-ytlstm-chat-over-video] yt-live-chat-message-input-renderer,
+html:not(:hover)[data-ytlstm-chat-over-video] yt-live-chat-header-renderer,
+[data-ytlstm-chat-over-video] yt-live-chat-banner-manager,
+[data-ytlstm-chat-over-video] yt-live-chat-restricted-participation-renderer,
+html:not(:hover)[data-ytlstm-chat-over-video] #contents #ticker,
+html:not(:hover)[data-ytlstm-chat-over-video] #contents #separator {
+  display: none;
+}
+[data-ytlstm-chat-over-video] yt-live-chat-item-list-renderer ::-webkit-scrollbar-track {
+  background: none !important;
+}
+[data-ytlstm-chat-over-video] yt-img-shadow {
+  display: none !important
+}
+[data-ytlstm-chat-over-video] yt-live-chat-banner-renderer yt-live-chat-text-message-renderer #content,
+[data-ytlstm-chat-over-video] yt-live-chat-text-message-renderer[author-is-owner] {
+  background: none !important;
+}
+html[data-ytlstm-chat-over-video] #chat #items > * {
+  padding: 3px 12px !important;
+}
+[data-ytlstm-chat-over-video] yt-live-chat-text-message-renderer #content {
+  padding: 5px;
+  border-radius: 5px;
+}
+[data-ytlstm-chat-over-video] yt-live-chat-text-message-renderer #menu {
+  background: none !important;
+}
+[data-ytlstm-chat-over-video] #item-scroller {
+  overflow-y: hidden !important;
+}
+[data-ytlstm-chat-over-video] #item-scroller:hover {
+  overflow-y: scroll !important;
+}
+html[data-ytlstm-chat-over-video] #chat #items {
+  display: flex;
+  flex-direction: column;
+}
+html[data-ytlstm-chat-over-video]:not([data-ytlstm-chat-on-left]) #chat #items > *,
+html[data-ytlstm-chat-over-video]:not([data-ytlstm-chat-on-left]) yt-live-chat-text-message-renderer #content {
+  margin-left: auto;
+}
+html[data-ytlstm-chat-over-video]:not([data-ytlstm-chat-on-left]) yt-live-chat-text-message-renderer #menu {
+  left: 0;
+  display: none;
+}
+html[data-ytlstm-chat-over-video]:not([data-ytlstm-chat-on-left]) yt-live-chat-text-message-renderer:hover #menu {
+  display: initial;
+}
+html[data-ytlstm-chat-over-video]:not([data-ytlstm-chat-on-left]) #item-list {
+  direction: rtl;
+}
+html[data-ytlstm-chat-over-video] #chat #items {
+  direction: var(--ytlstm-text-direction);
+}
+html[data-ytlstm-chat-over-video] #chat #items > * {
+  max-width: var(--ytlstm-max-chat-over-video-item-width);
+}

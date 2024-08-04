@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YouTube Livestreams Theater Mode Options</title>
+  <link rel="stylesheet" href="Options.css">
+</head>
+<body>
+
+  <div id='header'><img id='icon' src='/images/icon128.png'><h2>YouTube Livestreams Theater Mode</h2></div>
+  <h1>Options</h1>
+  <section>
+    <h3>Theater Mode</h3>
+    <h4>Design / Layout</h4>
+    <div>Force dark theme while in livestreams theater mode:<button id='forceDarkTheme'></button></div>
+    <div>Display YouTube header while in livestreams theater mode:<button id='displayYoutubeHeader'></button></div>
+    <div>Default chat side:<button id='showChatOnRight'></button></div>
+    <div>Default chat mode:<button id='showChatOverVideo'></button></div>
+    <div class='note'>Default chat side and chat mode are only applied when initially opening YouTube (and not everytime you enter livestreams theater mode).</div>
+    <div>Chat width (next to video):<input id='chatWidth' type='number' min='300' max='800' step='10'>px<span id='chatWidthError' class='inputError'>Value must be between 300 and 800</span></div>
+    <div>Chat width (over video):<input id='chatOverVideoWidth' type='number' min='250' max='800' step='10'>px<span id='chatOverVideoWidthError' class='inputError'>Value must be between 250 and 800</span></div>
+    <div>Chat over video margin top:<input id='chatOverVideoMarginTop' type='number' min='0' max='1000' step='10'>px<span id='chatOverVideoMarginTopError' class='inputError'>Value must be between 0 and 1000</span></div>
+    <div>Chat over video margin bottom:<input id='chatOverVideoMarginBottom' type='number' min='0' max='1000' step='10'>px<span id='chatOverVideoMarginBottomError' class='inputError'>Value must be between 0 and 1000</span></div>
+    <div class='note'>Minimum chat height is 350px. Margins will be automatically capped if needed to fit window (margin top takes priority over margin bottom).</div>
+    <div>Overlay and chat over video background opacity:<input id='overlayBackgroundOpacity' type='number' min='0' max='1' step='0.05'><span id='overlayBackgroundOpacityError' class='inputError'>Value must be between 0 and 1</span></div>
+    <div class='note'>The value 0 means fully transparent, 1 means fully opaque. Default is 0.8.</div>
+    <div>Overlay and chat over video text shadow:<button id='overlayTextShadow'></button></div>
+  </section>
+  <section>
+    <h4>Behaviour</h4>
+    <div>Show stream info on hover over:
+      <select id='showInfoOnVideoHover'>
+        <option value='video'>Video</option>
+        <option value='icon'>Icon</option>
+        <option value='disabled'>Disabled</option>
+      </select>
+    </div>
+    <div>Prevent the video from pausing when clicking on it while in livestreams theater mode:<button id='preventPausingOnClick'></button></div>
+    <div>Automatically enter livestreams theater mode (live):<button id='autoEnterTheaterMode'></button></div>
+    <div>Automatically enter livestreams theater mode (replay):<button id='autoEnterTheaterModeReplay'></button></div>
+    <div>Toggle livestreams theater mode shortcut:<input id='toggleShortcut' type='text' maxlength='1'><span id='toggleShortcutError' class='inputError'>Value must be a-z.</span></div>
+    <div class='note'>Selecting 't' will switch between default view and livestreams theater mode when it is available (overriding default YouTube theater mode). You can switch to a seperate keybinding, but default YouTube shortcuts will not be overriden (default shortcuts: <a target='_blank' href='https://support.google.com/youtube/answer/7631406?hl=en'>https://support.google.com/youtube/answer/7631406?hl=en</a>).</div>
+  </section>
+  <section>
+    <h3>Chat customization</h3>
+    <div>Default chat:<button id='defaultChatLive'></button></div>
+    <div>Colored usernames:<button id='coloredUsernames'></button></div>
+    <div>Hide profile pictures:<button id='hidePfp'></button></div>
+    <div class='note'>Profile pictures are always hidden in 'chat over video' mode.</div>
+    <div>Hide live reactions:<button id='hideLiveReactions'></button></div>
+    <div>Super Chat currency converter:<button id='superchatCurrencyConverter'></button></div>
+    <div class='note'>Super Chat currency converter requires additional host permission for 'napalighost.com'. No guarantee of accuracy of conversion rates. Do not use to make financial decisions. Might display no or completely wrong values if currencies are not recognized correctly, as YouTube in some cases uses different currency codes as well as different number formatting with different languages.</div>
+    <div id='convertToCurrencyContainer'>Convert to currency:
+      <select id="convertToCurrency">
+      </select>
+    </div>
+  </section>
+  <section>
+    <h3>Other</h3>
+    <div>Display obvious hint when the video is behind on a livestream:<button id='notLiveHint'></button></div>
+  </section>
+  <script src="Options.js"></script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+
+body[data-ytlstm-theater-mode]:not([data-ytlstm-display-youtube-header]) #masthead-container,
+body[data-ytlstm-theater-mode] #primary-inner > *:not(#below),
+body[data-ytlstm-theater-mode] #primary-inner > #below > #alerts,
+body[data-ytlstm-theater-mode] #primary-inner > #below > #messages,
+body[data-ytlstm-theater-mode] #primary-inner > #below > #clarify-box,
+body[data-ytlstm-theater-mode] #primary-inner > #below > #limited-state,
+body[data-ytlstm-theater-mode] #primary-inner > #below > #ticket-shelf,
+body[data-ytlstm-theater-mode] #primary-inner > #below > #merch-shelf,
+body[data-ytlstm-theater-mode] #primary-inner > #below > ytd-merch-shelf-renderer,
+body[data-ytlstm-theater-mode] #primary-inner > #below > #comments,
+body[data-ytlstm-theater-mode][data-ytlstm-new-layout] #primary-inner > #below > #related,
+body[data-ytlstm-theater-mode] #secondary-inner > *:not(#chat-container):not(#chat) {
+  display: none !important;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-display-youtube-header] #masthead-container {
+  box-shadow: 0 0px 6px 0px black;
+}
+body[data-ytlstm-theater-mode] #page-manager {
+  overflow: hidden !important;
+}
+body[data-ytlstm-theater-mode]:not([data-ytlstm-display-youtube-header]) #page-manager {
+  margin: 0 !important;
+}
+body[data-ytlstm-theater-mode] ytd-watch-flexy {
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  height: 100vh !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-display-youtube-header] ytd-watch-flexy {
+  height: calc(100vh - var(--ytd-toolbar-height)) !important;
+}
+body[data-ytlstm-theater-mode] ytd-app[data-ytlstm-chat-over-video] ytd-watch-flexy,
+body[data-ytlstm-theater-mode][data-ytlstm-new-layout] ytd-app[data-ytlstm-chat-over-video] ytd-watch-flexy,
+body[data-ytlstm-theater-mode][data-ytlstm-chat-hidden][data-ytlstm-new-layout] ytd-watch-flexy {
+  display: block !important;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-new-layout] ytd-app[data-ytlstm-chat-over-video] #chat {
+  background: transparent !important;
+}
+body[data-ytlstm-theater-mode] ytd-app[data-ytlstm-chat-on-left] ytd-watch-flexy {
+  grid-template-columns: auto 1fr !important;
+}
+body[data-ytlstm-theater-mode] #columns {
+  min-width: 0 !important;
+  grid-column: 2;
+  grid-row: 1;
+  padding-top: 0 !important;
+}
+body[data-ytlstm-theater-mode] ytd-app[data-ytlstm-chat-over-video] #columns {
+  position:absolute;
+  top: 0;
+  right: 0;
+}
+body[data-ytlstm-theater-mode] ytd-app[data-ytlstm-chat-over-video][data-ytlstm-chat-on-left] #columns {
+  left: 0;
+  right: auto;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-new-layout] ytd-app[data-ytlstm-chat-on-left] #chat {
+  left: 0;
+  right: auto;
+}
+body[data-ytlstm-theater-mode] ytd-app[data-ytlstm-chat-on-left] #columns {
+  grid-column: 1;
+}
+body[data-ytlstm-theater-mode] #player-theater-container,
+body[data-ytlstm-theater-mode] #player-full-bleed-container,
+body[data-ytlstm-theater-mode] #full-bleed-container,
+body[data-ytlstm-theater-mode] #player-wide-container {
+  grid-column: 1;
+  grid-row: 1;
+  height: 100vh !important;
+  max-height: none !important;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-display-youtube-header] #player-theater-container,
+body[data-ytlstm-theater-mode][data-ytlstm-display-youtube-header] #player-full-bleed-container,
+body[data-ytlstm-theater-mode][data-ytlstm-display-youtube-header] #full-bleed-container,
+body[data-ytlstm-theater-mode][data-ytlstm-display-youtube-header] #player-wide-container {
+  height: calc(100vh - var(--ytd-toolbar-height)) !important;
+}
+body[data-ytlstm-theater-mode] ytd-app[data-ytlstm-chat-on-left] #player-theater-container,
+body[data-ytlstm-theater-mode] ytd-app[data-ytlstm-chat-on-left] #player-full-bleed-container,
+body[data-ytlstm-theater-mode] ytd-app[data-ytlstm-chat-on-left] #full-bleed-container,
+body[data-ytlstm-theater-mode] ytd-app[data-ytlstm-chat-on-left] #player-wide-container {
+  grid-column: 2;
+}
+body[data-ytlstm-theater-mode] #primary {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-new-layout] #secondary {
+  display: none !important;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-new-layout] #full-bleed-container {
+  display: block !important;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-new-layout]:not([data-ytlstm-display-youtube-header]) ytd-watch-flexy[fixed-panels] #chat.ytd-watch-flexy {
+  top: 0px !important;
+}
+body[data-ytlstm-theater-mode]/*:not([data-ytlstm-new-layout])*/ #secondary {
+  height: 100% !important;
+  width: var(--ytlstm-chat-width) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-new-layout] #chat {
+  min-width: 300px;
+  width: var(--ytlstm-chat-width) !important;
+}
+/*body[data-ytlstm-theater-mode][data-ytlstm-new-layout][data-ytlstm-display-youtube-header] ytd-app[data-ytlstm-chat-over-video] #chat {
+  margin-top: 0px !important;
+}*/
+body[data-ytlstm-theater-mode][data-ytlstm-new-layout] ytd-watch-flexy[fixed-panels] #columns.ytd-watch-flexy {
+  padding-right: var(--ytlstm-chat-width) !important;
+}
+body[data-ytlstm-theater-mode] #secondary-inner {
+  height: 100% !important;
+}
+body[data-ytlstm-theater-mode] #chat {
+  height: 100vh !important;
+  margin-bottom: 0 !important;
+  border: none !important;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-display-youtube-header] #chat {
+  height: calc(100vh - var(--ytd-toolbar-height)) !important;
+}
+body[data-ytlstm-theater-mode] #primary-inner {
+  display: block;
+  width: var(--ytlstm-overlay-width);
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: 2112;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-info-hover-mode="disabled"] #primary-inner {
+  display: none;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-display-youtube-header] #primary-inner {
+  top: var(--ytd-toolbar-height);
+}
+body[data-ytlstm-theater-mode][data-ytlstm-info-hover-mode="icon"] #primary-inner {
+  display: none;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-info-hover-mode="icon"] ytd-app[data-ytlstm-show-info] #primary-inner {
+  display: block;
+}
+body[data-ytlstm-theater-mode] ytd-app[data-ytlstm-chat-on-left] #primary-inner {
+  right: 0;
+  left: auto;
+}
+body[data-ytlstm-theater-mode] ytd-video-primary-info-renderer {
+  border-bottom: none !important;
+}
+body[data-ytlstm-theater-mode] #below #meta,
+body[data-ytlstm-theater-mode] #below #info {
+  padding: 0 20px !important;
+}
+body[data-ytlstm-theater-mode] ytd-watch-metadata {
+  padding: 10px 20px !important;
+  margin: 0;
+}
+body[data-ytlstm-theater-mode] #primary-inner > #below > .watch-active-metadata > #meta,
+body[data-ytlstm-theater-mode] #primary-inner > #below > .watch-active-metadata > #info,
+body[data-ytlstm-theater-mode] #primary-inner ytd-watch-metadata {
+  background: rgba(255, 255, 255, var(--ytlstm-overlay-background-opacity));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+body[data-ytlstm-theater-mode] #primary-inner > #below {
+  max-height: var(--ytlstm-overlay-max-height);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+body[data-ytlstm-theater-mode] #primary-inner > #below:hover,
+body[data-ytlstm-theater-mode] ytd-app[data-ytlstm-show-info]:not([data-ytlstm-autohide]) #primary-inner > #below {
+  overflow: auto;
+}
+[dark] body[data-ytlstm-theater-mode] #primary-inner > #below > .watch-active-metadata > #meta,
+[dark] body[data-ytlstm-theater-mode] #primary-inner > #below > .watch-active-metadata > #info,
+[dark] body[data-ytlstm-theater-mode] #primary-inner ytd-watch-metadata {
+  background: rgba(0, 0, 0, var(--ytlstm-overlay-background-opacity));
+}
+
+body[data-ytlstm-theater-mode] ytd-app[data-ytlstm-show-info]:not([data-ytlstm-autohide]) #primary-inner ytd-watch-metadata,
+body[data-ytlstm-theater-mode] #primary-inner:hover ytd-watch-metadata,
+body[data-ytlstm-theater-mode] #primary-inner:hover > #below > .watch-active-metadata > #meta,
+body[data-ytlstm-theater-mode] #primary-inner:hover > #below > .watch-active-metadata > #info,
+body[data-ytlstm-theater-mode] ytd-app[data-ytlstm-show-info]:not([data-ytlstm-autohide]) #primary-inner > #below > .watch-active-metadata > #info {
+  opacity: 1;
+}
+
+body[data-ytlstm-overlay-text-shadow] #primary-inner > #below,
+body[data-ytlstm-overlay-text-shadow] #primary-inner > #below h1 {
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2), -1px -1px 1px rgba(255, 255, 255, 0.2), 1px -1px 1px rgba(255, 255, 255, 0.2), -1px 1px 1px rgba(255, 255, 255, 0.2);
+}
+[dark] body[data-ytlstm-overlay-text-shadow] #primary-inner > #below,
+[dark] body[data-ytlstm-overlay-text-shadow] #primary-inner > #below h1 {
+  text-shadow: 1px 1px 1px black, -1px -1px 1px black, 1px -1px 1px black, -1px 1px 1px black;
+}
+body[data-ytlstm-overlay-text-shadow] ytd-subscribe-button-renderer {
+  text-shadow: none;
+}
+
+body[data-ytlstm-theater-mode] ytd-video-secondary-info-renderer {
+  margin-bottom: 0 !important;
+}
+body[data-ytlstm-theater-mode] {
+  overflow: hidden !important;
+}
+body[data-ytlstm-theater-mode] #show-hide-button {
+  display: none !important;
+}
+body[data-ytlstm-theater-mode] .ytp-offline-slate-close-button, body[data-ytlstm-theater-mode] .ytp-offline-slate-open-button {
+  display: none;
+}
+ytd-watch-flexy[fullscreen] #youtubeLivestreamModeButton {
+  display: none;
+}
+#livestreamsTheaterMode rect,
+#toggleChatSide rect,
+#toggleChatOverVideo rect {
+  fill: none;
+  stroke: white;
+  stroke-width: 10;
+}
+#toggleChat rect {
+  fill: none;
+  stroke: white;
+  stroke-width: 8;
+}
+#toggleChatSide line, #toggleChatOverVideo line {
+  stroke-width: 8;
+  stroke: white;
+}
+#toggleChatSide polygon, #toggleChat polygon {
+  stroke: none;
+  fill: white;
+}
+body:not([data-ytlstm-theater-mode]) #toggleChatSide,
+body:not([data-ytlstm-theater-mode]) #toggleChatOverVideo,
+body:not([data-ytlstm-theater-mode]) #toggleChat {
+  display: none !important;
+}
+#ytlstm-streamInfoHoverIcon {
+  display: flex;
+  opacity: 0;
+  background: rgba(0, 0, 0, var(--ytlstm-overlay-background-opacity));
+  width: 25px;
+  height: 25px;
+  border: 2px solid rgb(222, 222, 222);
+  border-radius: 30px;
+  color: rgb(222, 222, 222);
+  font-size: 20px;
+  font: serif;
+  font-style: italic;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  justify-content: center;
+  z-index: 2112;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-info-hover-mode="icon"] ytd-app:not([data-ytlstm-show-info]) #ytlstm-streamInfoHoverIcon:not([data-ytlstm-autohide]) {
+  opacity: 1;
+}
+body[data-ytlstm-theater-mode] #less, body[data-ytlstm-theater-mode] #more {
+  padding: 0 1.2rem 6px 1.2rem;
+}
+body[data-ytlstm-theater-mode] #collapse {
+  padding: 0.8rem 1.2rem;
+}
+body[data-ytlstm-theater-mode] #collapse, body[data-ytlstm-theater-mode] #less {
+  position: sticky;
+  bottom: 0;
+}
+body[data-ytlstm-theater-mode] #collapse, body[data-ytlstm-theater-mode] #less, body[data-ytlstm-theater-mode] #more {
+  background: white;
+  border: 2px solid rgb(133, 133, 133);
+}
+[dark] body[data-ytlstm-theater-mode] #collapse, [dark] body[data-ytlstm-theater-mode] #less, [dark] body[data-ytlstm-theater-mode] #more {
+  background: black;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-chat-hidden] #secondary.ytd-watch-flexy,
+body[data-ytlstm-theater-mode][data-ytlstm-chat-hidden][data-ytlstm-new-layout] #chat-container,
+body[data-ytlstm-theater-mode][data-ytlstm-chat-hidden] #toggleChatOverVideo,
+body[data-ytlstm-theater-mode][data-ytlstm-chat-hidden] #toggleChatSide {
+  display: none;
+}
+body[data-ytlstm-theater-mode] .ytp-offline-slate-background {
+  background-size: contain;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-prevent-pausing-on-click] .html5-video-player,
+body[data-ytlstm-theater-mode][data-ytlstm-prevent-pausing-on-click] .html5-video-player video,
+body[data-ytlstm-theater-mode][data-ytlstm-prevent-pausing-on-click] .html5-video-player .ytp-iv-player-content {
+  pointer-events: none;
+}
+body[data-ytlstm-theater-mode][data-ytlstm-prevent-pausing-on-click] .html5-video-player > * {
+  pointer-events: auto;
+}
+#ytlstm-preventPausingOnClickElement {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+}
+#ytlstm-notLiveHint {
+  position: absolute;
+  bottom: 60px;
+  padding: 10px;
+  border-radius: 5px;
+  background: rgb(220, 20, 20);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+ytd-app:not([data-ytlstm-chat-on-left]) #ytlstm-notLiveHint {
+  left: 20px;
+}
+ytd-app[data-ytlstm-chat-on-left] #ytlstm-notLiveHint {
+  right: 20px;
+}

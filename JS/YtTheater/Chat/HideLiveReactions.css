@@ -1,0 +1,7 @@
+
+[data-ytlstm-hide-pfp] #author-photo {
+  display: none !important;
+}
+[data-ytlstm-hide-pfp] #avatar {
+  display: none !important;
+}

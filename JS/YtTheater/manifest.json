@@ -5,9 +5,8 @@
       "id": "{de621c74-2aa6-4c91-a2da-28d445b66bab}"
     }
   },
-  "name": "YouTube Livestreams Theater Mode",
-  "version": "4.1.1",
-  "description": "Improves the viewing experience of YouTube livestreams with an enhanced theater mode.",
+  "name": "YtTheater",
+  "version": "1.0",
   "content_scripts": [
     {
       "matches": [
@@ -51,18 +50,8 @@
       "all_frames": true
     }
   ],
-  "background": {
-    "scripts": [
-      "Background/Background.js"
-    ]
-  },
   "icons": {
-    "128": "images/icon128.png"
-  },
-  "options_ui": {
-    "page": "Options/Options.html",
-    "open_in_tab": true,
-    "browser_style": true
+    "128": "icon128.png"
   },
   "permissions": [
     "storage"

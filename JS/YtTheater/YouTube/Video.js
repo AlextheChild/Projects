@@ -1,5 +1,3 @@
-
-
 class Video {
 
   constructor() {
@@ -16,11 +14,11 @@ class Video {
     this.notLiveHint = null;
     this.notLiveHintClosed = false;
     this.liveObserver = new MutationObserver((mutations, observer) => {
-      if(settings.notLiveHint) {
+      if (settings.notLiveHint) {
         let videoPlayerContainer = document.querySelector('ytd-player .html5-video-player');
-        if(videoPlayerContainer && !videoPlayerContainer.classList.contains('unstarted-mode') && !videoPlayerContainer.classList.contains('ended-mode') && !videoPlayerContainer.classList.contains('ad-interrupting')) {
+        if (videoPlayerContainer && !videoPlayerContainer.classList.contains('unstarted-mode') && !videoPlayerContainer.classList.contains('ended-mode') && !videoPlayerContainer.classList.contains('ad-interrupting')) {
           mutations.forEach((mutation) => {
-            if(mutation.target.disabled || !mutation.target.parentElement.classList.contains('ytp-live')) {
+            if (mutation.target.disabled || !mutation.target.parentElement.classList.contains('ytp-live')) {
               this.removeNotLiveHint();
             }
             else {
@@ -34,12 +32,12 @@ class Video {
       }
     });
     this.liveObserver2 = new MutationObserver((mutations, observer) => {
-      if(settings.notLiveHint && !this.notLiveHintClosed) {
+      if (settings.notLiveHint && !this.notLiveHintClosed) {
         let videoPlayerContainer = document.querySelector('ytd-player .html5-video-player');
-        if(videoPlayerContainer && !videoPlayerContainer.classList.contains('unstarted-mode') && !videoPlayerContainer.classList.contains('ended-mode') && !videoPlayerContainer.classList.contains('ad-interrupting')) {
+        if (videoPlayerContainer && !videoPlayerContainer.classList.contains('unstarted-mode') && !videoPlayerContainer.classList.contains('ended-mode') && !videoPlayerContainer.classList.contains('ad-interrupting')) {
           mutations.forEach((mutation) => {
             let liveButton = mutation.target.querySelector('.ytp-live-badge');
-            if((liveButton && liveButton.disabled) || !mutation.target.classList.contains('ytp-live')) {
+            if ((liveButton && liveButton.disabled) || !mutation.target.classList.contains('ytp-live')) {
               this.removeNotLiveHint();
             }
             else {
@@ -63,18 +61,18 @@ class Video {
   }
 
   removeTheaterModeOptions() {
-    if(this.toggleLivestreamsTheaterMode.parentNode) this.toggleLivestreamsTheaterMode.parentNode.removeChild(this.toggleLivestreamsTheaterMode);
-    if(this.toggleChatSide.parentNode) this.toggleChatSide.parentNode.removeChild(this.toggleChatSide);
-    if(this.toggleChatOverVideo.parentNode) this.toggleChatOverVideo.parentNode.removeChild(this.toggleChatOverVideo);
-    if(this.toggleChat.parentNode) this.toggleChat.parentNode.removeChild(this.toggleChat);
+    if (this.toggleLivestreamsTheaterMode.parentNode) this.toggleLivestreamsTheaterMode.parentNode.removeChild(this.toggleLivestreamsTheaterMode);
+    if (this.toggleChatSide.parentNode) this.toggleChatSide.parentNode.removeChild(this.toggleChatSide);
+    if (this.toggleChatOverVideo.parentNode) this.toggleChatOverVideo.parentNode.removeChild(this.toggleChatOverVideo);
+    if (this.toggleChat.parentNode) this.toggleChat.parentNode.removeChild(this.toggleChat);
   }
 
   enterTheaterMode(leaveTheaterModeFunction) {
-    if(theaterMode.active) {
-      if(this.miniplayerButton && this.sizeButton && this.fullscreenButton) {
+    if (theaterMode.active) {
+      if (this.miniplayerButton && this.sizeButton && this.fullscreenButton) {
         this.miniplayerButton.addEventListener('click', leaveTheaterModeFunction);
         this.sizeButton.addEventListener('click', leaveTheaterModeFunction);
-        if(document.querySelector('.html5-video-player.ytp-fullscreen')) this.fullscreenButton.click();
+        if (document.querySelector('.html5-video-player.ytp-fullscreen')) this.fullscreenButton.click();
         this.fullscreenButton.addEventListener('click', leaveTheaterModeFunction);
       }
       else {
@@ -86,11 +84,11 @@ class Video {
   }
 
   leaveTheaterMode(leaveTheaterModeFunction) {
-    if(!theaterMode.active) {
-      if(this.miniplayerButton && this.sizeButton && this.fullscreenButton) {
-      this.miniplayerButton.removeEventListener('click', leaveTheaterModeFunction);
-      this.sizeButton.removeEventListener('click', leaveTheaterModeFunction);
-      this.fullscreenButton.removeEventListener('click', leaveTheaterModeFunction);
+    if (!theaterMode.active) {
+      if (this.miniplayerButton && this.sizeButton && this.fullscreenButton) {
+        this.miniplayerButton.removeEventListener('click', leaveTheaterModeFunction);
+        this.sizeButton.removeEventListener('click', leaveTheaterModeFunction);
+        this.fullscreenButton.removeEventListener('click', leaveTheaterModeFunction);
       }
     }
   }
@@ -101,12 +99,12 @@ class Video {
 
   setControls() {
     this.controls = document.querySelector('#movie_player .ytp-chrome-bottom');
-    if(this.controls) {
+    if (this.controls) {
       this.rightControls = this.controls.querySelector('.ytp-right-controls');
       this.miniplayerButton = this.controls.querySelector('.ytp-miniplayer-button');
       this.sizeButton = this.controls.querySelector('.ytp-size-button');
       this.fullscreenButton = this.controls.querySelector('.ytp-fullscreen-button');
-      if(this.rightControls && this.miniplayerButton && this.sizeButton && this.fullscreenButton) {
+      if (this.rightControls && this.miniplayerButton && this.sizeButton && this.fullscreenButton) {
         this.addTheaterModeOptions();
       }
       else {
@@ -131,8 +129,8 @@ class Video {
   }
 
   applyInfoHoverMode() {
-    if(theaterMode.active) {
-      switch(settings.showInfoOnVideoHover) {
+    if (theaterMode.active) {
+      switch (settings.showInfoOnVideoHover) {
         case 'video':
           document.body.removeAttribute('data-ytlstm-info-hover-mode');
           this.addInfoEventListeners();
@@ -169,8 +167,8 @@ class Video {
   }
 
   connectLiveObserver() {
-    this.liveObserver.observe(document.querySelector('#ytd-player .ytp-left-controls .ytp-live-badge'), { attributeFilter: [ 'disabled'] });
-    this.liveObserver2.observe(document.querySelector('#ytd-player .ytp-left-controls .ytp-time-display'), { attributeFilter: [ 'class' ] });
+    this.liveObserver.observe(document.querySelector('#ytd-player .ytp-left-controls .ytp-live-badge'), { attributeFilter: ['disabled'] });
+    this.liveObserver2.observe(document.querySelector('#ytd-player .ytp-left-controls .ytp-time-display'), { attributeFilter: ['class'] });
   }
 
   disconnectLiveObserver() {
@@ -179,10 +177,10 @@ class Video {
   }
 
   updateNotLiveHint() {
-    if(!document.querySelector('#ytd-player .ytp-left-controls .ytp-live-badge').disabled) {
-      if(settings.notLiveHint) {
+    if (!document.querySelector('#ytd-player .ytp-left-controls .ytp-live-badge').disabled) {
+      if (settings.notLiveHint) {
         let videoPlayerContainer = document.querySelector('ytd-player .html5-video-player');
-        if(videoPlayerContainer && !videoPlayerContainer.classList.contains('unstarted-mode') && !videoPlayerContainer.classList.contains('ended-mode') && !videoPlayerContainer.classList.contains('ad-interrupting')) {
+        if (videoPlayerContainer && !videoPlayerContainer.classList.contains('unstarted-mode') && !videoPlayerContainer.classList.contains('ended-mode') && !videoPlayerContainer.classList.contains('ad-interrupting')) {
           this.addNotLiveHint();
         }
       }
@@ -194,7 +192,7 @@ class Video {
 
   addNotLiveHint() {
     let button = document.querySelector('#ytd-player .ytp-left-controls .ytp-live-badge');
-    if(!this.notLiveHint && button && theaterMode.available && window.getComputedStyle(button).display != 'none') {
+    if (!this.notLiveHint && button && theaterMode.available && window.getComputedStyle(button).display != 'none') {
       this.notLiveHintClosed = false;
       this.notLiveHint = document.createElement('div');
       this.notLiveHint.id = 'ytlstm-notLiveHint';
@@ -209,12 +207,12 @@ class Video {
   }
 
   removeNotLiveHint() {
-    if(this.notLiveHint) {
-      if(this.notLiveHint.parentNode) this.notLiveHint.parentNode.removeChild(this.notLiveHint);
+    if (this.notLiveHint) {
+      if (this.notLiveHint.parentNode) this.notLiveHint.parentNode.removeChild(this.notLiveHint);
       this.notLiveHint = null;
     }
     let w = document.getElementById('ytlstm-notLiveHint');
-    if(w) w.parentNode.removeChild(w);
+    if (w) w.parentNode.removeChild(w);
   }
 
 }

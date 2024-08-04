@@ -1,5 +1,3 @@
-
-
 class ChatIframe {
 
   isReady() {
@@ -18,18 +16,18 @@ class ChatIframe {
     this.isInTheaterMode = false;
     this.container = document.getElementById('chat');
     this.element = document.getElementById('chatframe');
-    if(this.element) {
+    if (this.element) {
       this.element.addEventListener('load', () => {
         this.initDocument();
       });
-      if(this.element.contentDocument.readyState === 'complete') this.initDocument();
+      if (this.element.contentDocument.readyState === 'complete') this.initDocument();
     }
   }
 
   initDocument() {
     this.document = this.element.contentDocument;
     this.html = this.document.querySelector('html');
-    if(this.isReady()) {
+    if (this.isReady()) {
       this.initContent();
     }
     else {
@@ -40,10 +38,10 @@ class ChatIframe {
   initContent() {
     this.setCssVariables();
     this.activatePopoutChatObserver();
-    if(!theaterMode.chatOnRight) this.putOnLeft();
-    if(theaterMode.chatOverVideo) this.putOverVideo();
+    if (!theaterMode.chatOnRight) this.putOnLeft();
+    if (theaterMode.chatOverVideo) this.putOverVideo();
     theaterMode.autoEnterTheaterMode();
-    if(!this.isInTheaterMode && this.putInTheaterMode) {
+    if (!this.isInTheaterMode && this.putInTheaterMode) {
       this.enterTheaterMode();
       video.resize();
     }
@@ -51,8 +49,8 @@ class ChatIframe {
 
   activatePopoutChatObserver() {
     let ninjaMessageRenderer = this.document.querySelector('yt-live-chat-ninja-message-renderer');
-    if(ninjaMessageRenderer) {
-      youtube.popoutChatObserver.observe(ninjaMessageRenderer, { attributeFilter: [ "class" ] });
+    if (ninjaMessageRenderer) {
+      youtube.popoutChatObserver.observe(ninjaMessageRenderer, { attributeFilter: ["class"] });
     }
     else {
       setTimeout(this.activatePopoutChatObserver.bind(this), 100);
@@ -60,8 +58,8 @@ class ChatIframe {
   }
 
   place() {
-    if(theaterMode.active && theaterMode.chatOverVideo) {
-      if(video.controls.clientHeight == 0) {
+    if (theaterMode.active && theaterMode.chatOverVideo) {
+      if (video.controls.clientHeight == 0) {
         setTimeout(this.place.bind(this), 100);
       }
       else {
@@ -69,7 +67,7 @@ class ChatIframe {
         let chatHeight = Math.max(350, chatContainerHeight - settings.chatOverVideoMarginTop - settings.chatOverVideoMarginBottom);
         let maxMargin = chatContainerHeight - 350;
         let marginTop = Math.min(maxMargin, settings.chatOverVideoMarginTop);
-        if(settings.displayYoutubeHeader && !document.body.hasAttribute('data-ytlstm-new-layout')) {
+        if (settings.displayYoutubeHeader && !document.body.hasAttribute('data-ytlstm-new-layout')) {
           this.container.style.setProperty('margin-top', 'calc(' + marginTop + 'px + var(--ytd-toolbar-height))', 'important');
         }
         else {
@@ -89,11 +87,11 @@ class ChatIframe {
   setWidth() {
     let width = theaterMode.activeChatWidth;
     document.body.style.setProperty('--ytlstm-chat-width', width + 'px');
-    if(this.exists) {
+    if (this.exists) {
       this.html.style.setProperty('--ytlstm-max-chat-over-video-item-width', (width - 20) + 'px');
     }
-    if(theaterMode.active) {
-      if(!theaterMode.chatOverVideo) {
+    if (theaterMode.active) {
+      if (!theaterMode.chatOverVideo) {
         video.resize();
       }
       else {
@@ -103,13 +101,13 @@ class ChatIframe {
   }
 
   enterTheaterMode() {
-    if(!this.isInTheaterMode && this.isReady()) {
+    if (!this.isInTheaterMode && this.isReady()) {
       this.isInTheaterMode = true;
       this.setWidth();
       this.applyTheaterModeStyle();
-      if(!theaterMode.chatOnRight) this.putOnLeft();
-      if(theaterMode.chatOverVideo) this.putOverVideo();
-      if(settings.forceDarkTheme) this.applyDarkTheme();
+      if (!theaterMode.chatOnRight) this.putOnLeft();
+      if (theaterMode.chatOverVideo) this.putOverVideo();
+      if (settings.forceDarkTheme) this.applyDarkTheme();
       this.putInTheaterMode = false;
     }
     else {
@@ -118,44 +116,44 @@ class ChatIframe {
   }
 
   leaveTheaterMode() {
-    if(this.isInTheaterMode && this.isReady()) {
+    if (this.isInTheaterMode && this.isReady()) {
       this.isInTheaterMode = false;
       this.removeTheaterModeStyle();
-      if(!theaterMode.chatOnRight) this.putOnRight();
-      if(theaterMode.chatOverVideo) this.putNextToVideo();
-      if(settings.forceDarkTheme) this.removeDarkTheme();
+      if (!theaterMode.chatOnRight) this.putOnRight();
+      if (theaterMode.chatOverVideo) this.putNextToVideo();
+      if (settings.forceDarkTheme) this.removeDarkTheme();
     }
     this.putInTheaterMode = false;
   }
 
   applyDarkTheme() {
-    if(this.exists && !this.html.hasAttribute('dark')) {
+    if (this.exists && !this.html.hasAttribute('dark')) {
       this.html.setAttribute('dark', 'ytlstm');
     }
   }
 
   removeDarkTheme() {
-    if(this.exists && this.html.getAttribute('dark') == 'ytlstm') {
+    if (this.exists && this.html.getAttribute('dark') == 'ytlstm') {
       this.html.removeAttribute('dark');
     }
   }
 
   applyTheaterModeStyle() {
-    if(this.exists) {
+    if (this.exists) {
       this.html.setAttribute('data-ytlstm-theater-mode', '');
     }
   }
 
   removeTheaterModeStyle() {
-    if(this.exists) {
+    if (this.exists) {
       this.html.removeAttribute('data-ytlstm-theater-mode');
     }
   }
 
   show() {
-    if(this.exists) {
+    if (this.exists) {
       let button = this.document.querySelector('yt-live-chat-ninja-message-renderer.iron-selected tp-yt-paper-button#button');
-      if(button) button.click();
+      if (button) button.click();
     }
     document.body.removeAttribute('data-ytlstm-chat-hidden');
   }
@@ -166,7 +164,7 @@ class ChatIframe {
 
   putOnLeft() {
     youtube.app.setAttribute('data-ytlstm-chat-on-left', '');
-    if(this.exists) {
+    if (this.exists) {
       this.html.setAttribute('data-ytlstm-chat-on-left', '');
       this.html.style.removeProperty('--ytlstm-text-direction');
     }
@@ -174,7 +172,7 @@ class ChatIframe {
 
   putOnRight() {
     youtube.app.removeAttribute('data-ytlstm-chat-on-left');
-    if(this.exists) {
+    if (this.exists) {
       this.html.removeAttribute('data-ytlstm-chat-on-left');
       this.html.style.setProperty('--ytlstm-text-direction', this.document.body.getAttribute('dir'));
     }
@@ -184,9 +182,9 @@ class ChatIframe {
     youtube.app.setAttribute('data-ytlstm-chat-over-video', '');
     this.setWidth();
     this.place();
-    if(this.exists) {
+    if (this.exists) {
       this.html.setAttribute('data-ytlstm-chat-over-video', '');
-      if(theaterMode.chatOnRight) this.html.style.setProperty('--ytlstm-text-direction', this.document.body.getAttribute('dir'));
+      if (theaterMode.chatOnRight) this.html.style.setProperty('--ytlstm-text-direction', this.document.body.getAttribute('dir'));
     }
   }
 
@@ -194,14 +192,14 @@ class ChatIframe {
     youtube.app.removeAttribute('data-ytlstm-chat-over-video');
     this.setWidth();
     this.place();
-    if(this.exists) {
+    if (this.exists) {
       this.html.removeAttribute('data-ytlstm-chat-over-video');
       this.html.style.removeProperty('--ytlstm-text-direction');
     }
   }
 
   setCssVariables() {
-    if(this.exists) {
+    if (this.exists) {
       this.html.style.setProperty('--ytlstm-overlay-background-opacity', settings.overlayBackgroundOpacity);
     }
   }

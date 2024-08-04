@@ -1,4 +1,3 @@
-
 class InfoIcon {
 
   constructor() {
@@ -14,7 +13,7 @@ class InfoIcon {
   }
 
   remove() {
-    if(this.icon.parentNode) this.icon.parentNode.removeChild(this.icon);
+    if (this.icon.parentNode) this.icon.parentNode.removeChild(this.icon);
     this.icon.removeEventListener('mouseenter', video.onMouseEnterInfo);
     youtube.primaryInner.removeEventListener('mouseleave', video.onMouseLeaveInfo);
   }

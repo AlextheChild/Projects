@@ -1,4 +1,3 @@
-
 let chatIframe,
     overlay = new Overlay(),
     theaterMode = new TheaterMode(),

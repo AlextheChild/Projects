@@ -1,4 +1,3 @@
-
 class Overlay {
 
   place() {
@@ -7,7 +6,7 @@ class Overlay {
   }
 
   applyTextShadow() {
-    if(theaterMode.active && settings.overlayTextShadow) {
+    if (theaterMode.active && settings.overlayTextShadow) {
       this.setAttribute('data-ytlstm-overlay-text-shadow', '');
     }
     else {
@@ -17,12 +16,12 @@ class Overlay {
 
   setAttribute(name, value) {
     document.body.setAttribute(name, value);
-    if(chatIframe && chatIframe.document) chatIframe.document.querySelector('html').setAttribute(name, value);
+    if (chatIframe && chatIframe.document) chatIframe.document.querySelector('html').setAttribute(name, value);
   }
 
   removeAttribute(name) {
     document.body.removeAttribute(name);
-    if(chatIframe && chatIframe.document) chatIframe.document.querySelector('html').removeAttribute(name);
+    if (chatIframe && chatIframe.document) chatIframe.document.querySelector('html').removeAttribute(name);
   }
 
 }

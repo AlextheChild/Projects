@@ -1,4 +1,3 @@
-
 class Settings {
 
   constructor() {
@@ -13,7 +12,7 @@ class Settings {
       this.chatOverVideoMarginTop = data.chatOverVideoMarginTop || 0;
       this.chatOverVideoMarginBottom = data.chatOverVideoMarginBottom || 0;
       let showInfoValue;
-      switch(data.showInfoOnVideoHover) {
+      switch (data.showInfoOnVideoHover) {
         case undefined:
           showInfoValue = 'video';
           break;
@@ -41,15 +40,15 @@ class Settings {
   }
 
   storageChange(changes, area) {
-    if(area == 'local') {
+    if (area == 'local') {
       let changedItems = Object.keys(changes);
       for (let item of changedItems) {
-        switch(item) {
+        switch (item) {
           case 'forceDarkTheme': this.setForceDarkTheme(changes[item].newValue); break;
           case 'displayYoutubeHeader':
             this.displayYoutubeHeader = changes[item].newValue;
             theaterMode.applyDisplayYouTubeHeader();
-            if(theaterMode.active && theaterMode.chatOverVideo) chatIframe.place();
+            if (theaterMode.active && theaterMode.chatOverVideo) chatIframe.place();
             break;
           case 'overlayTextShadow': this.overlayTextShadow = changes[item].newValue; overlay.applyTextShadow(); break;
           case 'chatWidth': this.chatWidth = changes[item].newValue; chatIframe.setWidth(); break;
@@ -80,8 +79,8 @@ class Settings {
 
   setForceDarkTheme(value) {
     this.forceDarkTheme = value;
-    if(theaterMode.active) {
-      if(this.forceDarkTheme) {
+    if (theaterMode.active) {
+      if (this.forceDarkTheme) {
         youtube.applyDarkTheme();
         chatIframe.applyDarkTheme();
       }

@@ -1,4 +1,3 @@
-
 class TheaterMode {
 
   constructor() {
@@ -13,7 +12,7 @@ class TheaterMode {
 
   makeAvailable() {
     console.log('make available');
-    if(!this.available && youtube.chatIsAvailable) {
+    if (!this.available && youtube.chatIsAvailable) {
       this.available = true;
       chatIframe = new ChatIframe();
       chatIframe.init();
@@ -24,24 +23,24 @@ class TheaterMode {
   }
 
   autoEnterTheaterMode() {
-    if(this.available && !this.active && !document.body.hasAttribute('data-ytlstm-new-layout')) {
-      switch(chatIframe.element.contentWindow.location.pathname) {
+    if (this.available && !this.active && !document.body.hasAttribute('data-ytlstm-new-layout')) {
+      switch (chatIframe.element.contentWindow.location.pathname) {
         case '/live_chat':
-          if(settings.autoEnterTheaterMode) this.activate();
-        break;
+          if (settings.autoEnterTheaterMode) this.activate();
+          break;
         case '/live_chat_replay':
-          if(settings.autoEnterTheaterModeReplay) this.activate();
-        break;
+          if (settings.autoEnterTheaterModeReplay) this.activate();
+          break;
       }
     }
   }
 
   makeUnavailable() {
     console.log('make UNavailable');
-    if(this.available) {
+    if (this.available) {
       this.available = false;
       document.removeEventListener('keydown', this.boundShortcutEventListener);
-      if(this.active) this.deactivate();
+      if (this.active) this.deactivate();
       video.removeTheaterModeOptions();
       video = null;
       chatIframe = null;
@@ -49,7 +48,7 @@ class TheaterMode {
   }
 
   toggle() {
-    if(!this.active) {
+    if (!this.active) {
       this.activate();
     }
     else {
@@ -58,13 +57,13 @@ class TheaterMode {
   }
 
   activate() {
-    if(!this.active) {
+    if (!this.active) {
       this.active = true;
       this.disableEFYT();
       overlay.applyTextShadow();
-      if(youtube.activePlayer == youtube.playerContainer) video.sizeButton.click();
+      if (youtube.activePlayer == youtube.playerContainer) video.sizeButton.click();
       setTimeout(() => {
-        if(!document.querySelector('#secondary #chat-container')) {
+        if (!document.querySelector('#secondary #chat-container')) {
           document.body.setAttribute('data-ytlstm-new-layout', '');
           video.resize();
           //chatIframe = new ChatIframe();
@@ -76,41 +75,41 @@ class TheaterMode {
       if(document.querySelector('.html5-video-player.ytp-fullscreen')) video.fullscreenButton.click();
       video.fullscreenButton.addEventListener('click', this.boundDeactivate);*/
       video.enterTheaterMode(this.boundDeactivate);
-      if(youtube.clipContainer) youtube.clipObserver.observe(youtube.clipContainer, { attributeFilter: [ "visibility" ] });
+      if (youtube.clipContainer) youtube.clipObserver.observe(youtube.clipContainer, { attributeFilter: ["visibility"] });
       document.body.setAttribute('data-ytlstm-theater-mode', '');
-      if(!this.showChat) chatIframe.hide();
+      if (!this.showChat) chatIframe.hide();
       this.applyDisplayYouTubeHeader();
       this.applyPreventPausingOnClick();
       video.applyInfoHoverMode();
       let secondaryInfoRenderer = document.querySelector('ytd-expander.ytd-video-secondary-info-renderer');
-      if(secondaryInfoRenderer && !secondaryInfoRenderer.hasAttribute('collapsed')) {
+      if (secondaryInfoRenderer && !secondaryInfoRenderer.hasAttribute('collapsed')) {
         let lessButton = document.querySelector('[slot="less-button"][role="button"].ytd-video-secondary-info-renderer');
-        if(lessButton) lessButton.click();
+        if (lessButton) lessButton.click();
       }
       youtube.resizeObserver.observe(youtube.playerTheaterContainer);
       youtube.resizeObserver.observe(video.controls);
-      if(chatIframe.container.hasAttribute('collapsed')) {
+      if (chatIframe.container.hasAttribute('collapsed')) {
         let button = document.querySelector('div#show-hide-button button');
-        if(button) button.click();
+        if (button) button.click();
       }
       chatIframe.enterTheaterMode();
-      if(settings.forceDarkTheme) youtube.applyDarkTheme();
-      youtube.overlayAutoHideObserver.observe(document.querySelector('.html5-video-player'), {attributes:true});
+      if (settings.forceDarkTheme) youtube.applyDarkTheme();
+      youtube.overlayAutoHideObserver.observe(document.querySelector('.html5-video-player'), { attributes: true });
       video.resize();
     }
   }
 
   disableEFYT() {
     this.disabledEFYT = document.body.classList.contains('efyt-wide-player');
-    if(this.disabledEFYT) document.body.classList.remove('efyt-wide-player');
+    if (this.disabledEFYT) document.body.classList.remove('efyt-wide-player');
   }
 
   reenableEFYT() {
-    if(this.disabledEFYT) document.body.classList.add('efyt-wide-player');
+    if (this.disabledEFYT) document.body.classList.add('efyt-wide-player');
   }
 
   applyDisplayYouTubeHeader() {
-    if(this.active && settings.displayYoutubeHeader) {
+    if (this.active && settings.displayYoutubeHeader) {
       document.body.setAttribute('data-ytlstm-display-youtube-header', '');
     }
     else {
@@ -119,8 +118,8 @@ class TheaterMode {
   }
 
   applyPreventPausingOnClick() {
-    if(this.active && settings.preventPausingOnClick) {
-      if(!this.preventPausingOnClickElement) {
+    if (this.active && settings.preventPausingOnClick) {
+      if (!this.preventPausingOnClickElement) {
         this.preventPausingOnClickElement = document.createElement('div');
         this.preventPausingOnClickElement.id = 'ytlstm-preventPausingOnClickElement';
         this.preventPausingOnClickElement.onclick = (event) => {
@@ -128,10 +127,10 @@ class TheaterMode {
         };
       }
       let parentNode = document.querySelector('.html5-video-player');
-      if(parentNode) parentNode.appendChild(this.preventPausingOnClickElement);
+      if (parentNode) parentNode.appendChild(this.preventPausingOnClickElement);
     }
     else {
-      if(this.preventPausingOnClickElement && this.preventPausingOnClickElement.parentNode) this.preventPausingOnClickElement.parentNode.removeChild(this.preventPausingOnClickElement);
+      if (this.preventPausingOnClickElement && this.preventPausingOnClickElement.parentNode) this.preventPausingOnClickElement.parentNode.removeChild(this.preventPausingOnClickElement);
     }
   }
 
@@ -140,13 +139,13 @@ class TheaterMode {
   }
 
   deactivate() {
-    if(this.active) {
+    if (this.active) {
       this.active = false;
       document.body.removeAttribute('data-ytlstm-theater-mode');
-      if(!this.showChat) chatIframe.show();
+      if (!this.showChat) chatIframe.show();
       youtube.primaryInner.style.width = '';
       youtube.app.removeAttribute('data-ytlstm-showInfo');
-      if(document.head.querySelector('#yltm-overlayMetaStyle')) document.head.removeChild(document.head.querySelector('#yltm-overlayMetaStyle'));
+      if (document.head.querySelector('#yltm-overlayMetaStyle')) document.head.removeChild(document.head.querySelector('#yltm-overlayMetaStyle'));
       /*video.miniplayerButton.removeEventListener('click', this.boundDeactivate);
       video.sizeButton.removeEventListener('click', this.boundDeactivate);
       video.fullscreenButton.removeEventListener('click', this.boundDeactivate);*/
@@ -154,7 +153,7 @@ class TheaterMode {
       youtube.clipObserver.disconnect();
       youtube.resizeObserver.disconnect();
       video.clear();
-      if(settings.forceDarkTheme) youtube.removeDarkTheme();
+      if (settings.forceDarkTheme) youtube.removeDarkTheme();
       chatIframe.leaveTheaterMode();
       overlay.applyTextShadow();
       this.applyDisplayYouTubeHeader();
@@ -167,7 +166,7 @@ class TheaterMode {
 
   toggleChatSide() {
     this.chatOnRight = !this.chatOnRight;
-    if(this.chatOnRight) {
+    if (this.chatOnRight) {
       chatIframe.putOnRight();
     }
     else {
@@ -177,7 +176,7 @@ class TheaterMode {
 
   toggleChatOverVideo() {
     this.chatOverVideo = !this.chatOverVideo;
-    if(this.chatOverVideo) {
+    if (this.chatOverVideo) {
       chatIframe.putOverVideo();
     }
     else {
@@ -193,7 +192,7 @@ class TheaterMode {
 
   toggleChat() {
     this.showChat = !this.showChat;
-    if(this.showChat) {
+    if (this.showChat) {
       chatIframe.show();
     }
     else {
@@ -204,14 +203,14 @@ class TheaterMode {
   }
 
   shortcutEventListener(event) {
-    if(!event.ctrlKey && !event.metaKey && settings.toggleShortcut && event.key.toUpperCase() === settings.toggleShortcut.toUpperCase() &&
+    if (!event.ctrlKey && !event.metaKey && settings.toggleShortcut && event.key.toUpperCase() === settings.toggleShortcut.toUpperCase() &&
       (document.activeElement == null || (document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'INPUT' && document.activeElement.getAttribute("contenteditable") !== "true")) &&
       (document.querySelector('ytd-engagement-panel-section-list-renderer') == null || document.querySelector('ytd-engagement-panel-section-list-renderer').getAttribute('visibility') !== 'ENGAGEMENT_PANEL_VISIBILITY_EXPANDED')) {
-        theaterMode.toggle();
-        event.preventDefault();
-        event.stopPropagation();
+      theaterMode.toggle();
+      event.preventDefault();
+      event.stopPropagation();
     }
-    else if(this.active && (event.keyCode === 27 /*ESC*/ || (!event.ctrlKey && !event.metaKey && event.keyCode === 84 /*T*/) || (!event.ctrlKey && !event.metaKey && event.keyCode === 70 /*F*/))) {
+    else if (this.active && (event.keyCode === 27 /*ESC*/ || (!event.ctrlKey && !event.metaKey && event.keyCode === 84 /*T*/) || (!event.ctrlKey && !event.metaKey && event.keyCode === 70 /*F*/))) {
       theaterMode.deactivate();
     }
   }

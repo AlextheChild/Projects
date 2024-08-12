@@ -1,1 +1,1 @@
-2start /min java -jar "C:\Users\Alex\Github\Projects\Java\screenMeasurer\screenMeasurer.jar" "2"
+start /min java -jar "C:\Users\Alex\Github\Projects\Java\screenMeasurer\screenMeasurer.jar" "2"

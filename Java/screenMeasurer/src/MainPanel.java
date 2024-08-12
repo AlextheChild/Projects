@@ -12,9 +12,8 @@ import java.time.format.DateTimeFormatter;
 // ! review all the logic
 
 public class MainPanel extends JPanel implements MouseListener, MouseMotionListener {
-    final int width = 1440, height = 900;
+
     final int rightMargin = 70, bottomMargin = 30;
-    final String saveFolderPath = "C:/Users/Alex/Desktop/";
 
     JLabel coordLabel;
 
@@ -132,29 +131,7 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
         GUI.dispose();
 
         // take screenshot
-        Robot r = new Robot();
-        BufferedImage image;
-        MultiResolutionImage mrImage = r.createMultiResolutionScreenCapture(new Rectangle(x, y, w, h));
-        List<Image> resolutionVariants = mrImage.getResolutionVariants();
-        if (resolutionVariants.size() > 1) {
-            image = (BufferedImage) resolutionVariants.get(1);
-        } else {
-            image = (BufferedImage) resolutionVariants.get(0);
-        }
-
-        // save
-        if (Main.mode.equals("save")) {
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH.mm.ss");
-            LocalDateTime now = LocalDateTime.now();
-            String[] timeArray = dtf.format(now).split(" ");
-
-            ImageIO.write(image, "png",
-                    new File(saveFolderPath +
-                            "Screenshot " + timeArray[0] + " at " + timeArray[1] + ".png"));
-        }
-
-        // copy to clipboard
-        new ImageCopier(image);
+        new Screenshotter(x, y, w, h, Main.mode > 1);
     }
 
     // ————— coord display ————— //
@@ -171,10 +148,10 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
         coordLabel.setText(num1 + ", " + num2);
 
         // marginalization
-        if (x > width - rightMargin) {
+        if (x > Main.width - rightMargin) {
             x -= rightMargin;
         }
-        if (y > height - bottomMargin) {
+        if (y > Main.height - bottomMargin) {
             y -= bottomMargin;
         }
         coordLabel.setBounds(x, y, 70, 30);

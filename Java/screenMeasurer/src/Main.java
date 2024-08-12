@@ -1,8 +1,28 @@
+import java.awt.*;
+
 public class Main {
-    static String mode;
+    static int width, height;
+    static int mode;
+
+    /**
+     * mode 0: screenshot of whole screen, no save
+     * mode 1: user defined screenshot, no save
+     * mode 2: user defined screenshot, save
+     */
 
     public static void main(String[] args) throws Exception {
-        mode = args[0];
-        new GUI();
+        // mode = Integer.parseInt(args[0]);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        width = (int) screenSize.getWidth();
+        height = (int) screenSize.getHeight();
+
+        switch (mode) {
+            case 0:
+                new Screenshotter(0, 0, width, height, false);
+            case 1:
+                new GUI();
+            case 2:
+                new GUI();
+        }
     }
 }

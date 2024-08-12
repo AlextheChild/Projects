@@ -143,13 +143,15 @@ public class MainPanel extends JPanel implements MouseListener, MouseMotionListe
         }
 
         // save
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH.mm.ss");
-        LocalDateTime now = LocalDateTime.now();
-        String[] timeArray = dtf.format(now).split(" ");
+        if (Main.mode.equals("save")) {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH.mm.ss");
+            LocalDateTime now = LocalDateTime.now();
+            String[] timeArray = dtf.format(now).split(" ");
 
-        ImageIO.write(image, "png",
-                new File(saveFolderPath +
-                        "Screenshot " + timeArray[0] + " at " + timeArray[1] + ".png"));
+            ImageIO.write(image, "png",
+                    new File(saveFolderPath +
+                            "Screenshot " + timeArray[0] + " at " + timeArray[1] + ".png"));
+        }
 
         // copy to clipboard
         new ImageCopier(image);

@@ -1,1 +1,0 @@
-start /min java -jar "C:\Users\Alex\Github\Projects\Java\screenMeasurer\screenMeasurer.jar"

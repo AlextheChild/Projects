@@ -1,5 +1,4 @@
 class InfoIcon {
-
   constructor() {
     this.icon = document.createElement('div');
     this.icon.textContent = 'i';
@@ -17,5 +16,4 @@ class InfoIcon {
     this.icon.removeEventListener('mouseenter', video.onMouseEnterInfo);
     youtube.primaryInner.removeEventListener('mouseleave', video.onMouseLeaveInfo);
   }
-
 }

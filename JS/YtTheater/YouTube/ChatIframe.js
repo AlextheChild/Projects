@@ -126,17 +126,17 @@ class ChatIframe {
     this.putInTheaterMode = false;
   }
 
-  applyDarkTheme() {
-    if (this.exists && !this.html.hasAttribute('dark')) {
-      this.html.setAttribute('dark', 'ytlstm');
-    }
-  }
+  // applyDarkTheme() {
+  //   if (this.exists && !this.html.hasAttribute('dark')) {
+  //     this.html.setAttribute('dark', 'ytlstm');
+  //   }
+  // }
 
-  removeDarkTheme() {
-    if (this.exists && this.html.getAttribute('dark') == 'ytlstm') {
-      this.html.removeAttribute('dark');
-    }
-  }
+  // removeDarkTheme() {
+  //   if (this.exists && this.html.getAttribute('dark') == 'ytlstm') {
+  //     this.html.removeAttribute('dark');
+  //   }
+  // }
 
   applyTheaterModeStyle() {
     if (this.exists) {
@@ -162,46 +162,45 @@ class ChatIframe {
     document.body.setAttribute('data-ytlstm-chat-hidden', '');
   }
 
-  putOnLeft() {
-    youtube.app.setAttribute('data-ytlstm-chat-on-left', '');
-    if (this.exists) {
-      this.html.setAttribute('data-ytlstm-chat-on-left', '');
-      this.html.style.removeProperty('--ytlstm-text-direction');
-    }
-  }
+  // putOnLeft() {
+  //   youtube.app.setAttribute('data-ytlstm-chat-on-left', '');
+  //   if (this.exists) {
+  //     this.html.setAttribute('data-ytlstm-chat-on-left', '');
+  //     this.html.style.removeProperty('--ytlstm-text-direction');
+  //   }
+  // }
 
-  putOnRight() {
-    youtube.app.removeAttribute('data-ytlstm-chat-on-left');
-    if (this.exists) {
-      this.html.removeAttribute('data-ytlstm-chat-on-left');
-      this.html.style.setProperty('--ytlstm-text-direction', this.document.body.getAttribute('dir'));
-    }
-  }
+  // putOnRight() {
+  //   youtube.app.removeAttribute('data-ytlstm-chat-on-left');
+  //   if (this.exists) {
+  //     this.html.removeAttribute('data-ytlstm-chat-on-left');
+  //     this.html.style.setProperty('--ytlstm-text-direction', this.document.body.getAttribute('dir'));
+  //   }
+  // }
 
-  putOverVideo() {
-    youtube.app.setAttribute('data-ytlstm-chat-over-video', '');
-    this.setWidth();
-    this.place();
-    if (this.exists) {
-      this.html.setAttribute('data-ytlstm-chat-over-video', '');
-      if (theaterMode.chatOnRight) this.html.style.setProperty('--ytlstm-text-direction', this.document.body.getAttribute('dir'));
-    }
-  }
+  // putOverVideo() {
+  //   youtube.app.setAttribute('data-ytlstm-chat-over-video', '');
+  //   this.setWidth();
+  //   this.place();
+  //   if (this.exists) {
+  //     this.html.setAttribute('data-ytlstm-chat-over-video', '');
+  //     if (theaterMode.chatOnRight) this.html.style.setProperty('--ytlstm-text-direction', this.document.body.getAttribute('dir'));
+  //   }
+  // }
 
-  putNextToVideo() {
-    youtube.app.removeAttribute('data-ytlstm-chat-over-video');
-    this.setWidth();
-    this.place();
-    if (this.exists) {
-      this.html.removeAttribute('data-ytlstm-chat-over-video');
-      this.html.style.removeProperty('--ytlstm-text-direction');
-    }
-  }
+  // putNextToVideo() {
+  //   youtube.app.removeAttribute('data-ytlstm-chat-over-video');
+  //   this.setWidth();
+  //   this.place();
+  //   if (this.exists) {
+  //     this.html.removeAttribute('data-ytlstm-chat-over-video');
+  //     this.html.style.removeProperty('--ytlstm-text-direction');
+  //   }
+  // }
 
   setCssVariables() {
     if (this.exists) {
       this.html.style.setProperty('--ytlstm-overlay-background-opacity', settings.overlayBackgroundOpacity);
     }
   }
-
 }

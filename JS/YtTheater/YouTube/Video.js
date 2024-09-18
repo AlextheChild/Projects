@@ -1,6 +1,7 @@
 class Video {
 
   constructor() {
+    // here's where the buttons are defined
     this.toggleLivestreamsTheaterMode = VideoControlsButton.get('livestreamsTheaterMode', 'Toggle Livestreams Theater Mode', "<svg viewBox='0 0 200 200'><rect x='20' y='50' width='100' height='100'/><rect x='140' y='50' width='40' height='100'/></svg>");
     this.toggleChatSide = VideoControlsButton.get('toggleChatSide', 'Toggle Chat Side', "<svg viewBox='0 0 200 200'><rect x='20' y='50' width='100' height='100'/><rect x='140' y='50' width='40' height='100'/><line x1='70' x2='160' y1='100' y2='100'/><polygon points='80,80 80,120 60,100'/><polygon points='150,80 150,120 170,100'/></svg>");
     this.toggleChatOverVideo = VideoControlsButton.get('toggleChatOverVideo', 'Toggle Chat Over Video', "<svg viewBox='0 0 200 200'><rect x='20' y='50' width='160' height='100'/><line x1='125' x2='165' y1='70' y2='70'/><line x1='125' x2='155' y1='85' y2='85'/><line x1='125' x2='170' y1='100' y2='100'/><line x1='125' x2='140' y1='115' y2='115'/></svg>");

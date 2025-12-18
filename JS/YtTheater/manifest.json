@@ -9,7 +9,7 @@
       ],
       "run_at": "document_idle",
       "css": [
-        "YouTube/Style.css"
+        "YouTube/style.css"
       ],
       "js": [
         "YouTube/Overlay.js",

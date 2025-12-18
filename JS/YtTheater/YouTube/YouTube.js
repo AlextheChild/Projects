@@ -118,20 +118,4 @@ class YouTube {
       this.initTimeout = setTimeout(this.init.bind(this), 300);
     }
   }
-
-  // removeDarkTheme() {
-  //   if (this.html.getAttribute('dark') == 'ytlstm') {
-  //     this.html.removeAttribute('dark');
-  //     if (this.activePlayer === this.playerContainer) {
-  //       let masthead = document.getElementById('masthead');
-  //       if (masthead) masthead.removeAttribute('dark');
-  //     }
-  //   }
-  // }
-
-  // applyDarkTheme() {
-  //   if (!this.html.hasAttribute('dark')) {
-  //     this.html.setAttribute('dark', 'ytlstm');
-  //   }
-  // }
 }

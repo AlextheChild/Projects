@@ -1,1 +1,1 @@
-start /min java -jar "C:\Users\Alex\Github\Projects\Java\screenMeasurer\screenMeasurer.jar" "2"
+start /min "" "C:\Program Files\Java\jdk-26.0.2\bin\javaw.exe" -jar "C:\Users\alexj\Github\Projects\Java\screenMeasurer\screenMeasurer.jar" "2"

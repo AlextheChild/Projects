@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Screenshotter {
-    final String saveFolderPath = "C:/Users/Alex/Desktop/";
+    final String saveFolderPath = "C:/Users/alexj/OneDrive/Desktop/";
 
     public Screenshotter(int x, int y, int w, int h, boolean save) throws AWTException, IOException {
         Robot r = new Robot();

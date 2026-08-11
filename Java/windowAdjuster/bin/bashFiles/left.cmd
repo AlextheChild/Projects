@@ -1,0 +1,1 @@
+start /min "" "C:\Program Files\Java\jdk-26.0.2\bin\javaw.exe" -jar "C:\Users\alexj\Github\Projects\Java\windowAdjuster\windowAdjuster.jar" "-1"
